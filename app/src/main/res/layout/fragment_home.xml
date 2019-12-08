@@ -18,6 +18,14 @@
 
         </fragment>
 
+        <fragment
+            android:name="com.android.fragment.FragmentPlaylist"
+            android:id="@+id/fragmentplaylist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </fragment>
+
     </LinearLayout>
 
 

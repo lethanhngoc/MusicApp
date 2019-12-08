@@ -1,6 +1,7 @@
 package com.android.service;
 
 import com.android.model.Advertisement;
+import com.android.model.Playlist;
 
 import java.util.List;
 
@@ -11,5 +12,9 @@ public interface Dataservice {
 
     @GET("songbanner.php")
     Call<List<Advertisement>> GetDataBanner();
+
+    @GET("playlistforcurrent.php")
+    Call<List<Playlist>>  GetPlaylistCurrentDay();
+
 
 }

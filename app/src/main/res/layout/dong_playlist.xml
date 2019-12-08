@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/imageviewbackgroundplaylist"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"></ImageView>
+
+    <View
+        android:background="@drawable/custom_background_banner"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"></View>
+
+    <ImageView
+        android:id="@+id/imageviewplaylist"
+        android:layout_alignBottom="@id/imageviewbackgroundplaylist"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="6dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"></ImageView>
+
+    <TextView
+        android:text="Những bài hit cũ"
+        android:layout_alignBottom="@id/imageviewplaylist"
+        android:layout_toRightOf="@id/imageviewplaylist"
+        android:layout_marginLeft="13dp"
+        android:textStyle="bold"
+        android:textColor="#ffff"
+        android:id="@+id/textviewtenplaylist"
+        android:maxLines="1"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="50dp"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></TextView>
+
+</RelativeLayout>
