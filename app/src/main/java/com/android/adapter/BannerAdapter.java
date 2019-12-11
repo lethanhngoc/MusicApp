@@ -1,6 +1,7 @@
 package com.android.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.android.activity.ListSongsActivity;
 import com.android.mainapp.R;
 import com.android.model.Advertisement;
 import com.squareup.picasso.Picasso;
@@ -40,7 +42,7 @@ public class BannerAdapter extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         LayoutInflater inflater=LayoutInflater.from(context);
         View view =inflater.inflate(R.layout.list_banner,null);
 
@@ -53,6 +55,15 @@ public class BannerAdapter extends PagerAdapter {
         Picasso.with(context).load(arrayListbanner.get(position).getHinhBaiHat()).into(imgsongbanner);
         txttilesongbanner.setText(arrayListbanner.get(position).getTenBaiHat());
         txtnoidung.setText(arrayListbanner.get(position).getNoidung());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ListSongsActivity.class);
+                intent.putExtra("banner",arrayListbanner.get(position));
+                context.startActivity(intent);
+            }
+        });
         container.addView(view);
         return view;
     }

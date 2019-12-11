@@ -4,7 +4,9 @@ package com.android.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Advertisement {
+import java.io.Serializable;
+
+public class Advertisement implements Serializable {
 
     @SerializedName("IdQuangCao")
     @Expose
