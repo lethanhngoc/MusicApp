@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:padding="7dp"
+        android:id="@+id/relativegenreandtopic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="CHỦ ĐỀ VÀ THỂ LOẠI"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:id="@+id/textviewtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <TextView
+            android:id="@+id/textviewseemore"
+            android:textColor="#913677"
+            android:layout_alignParentRight="true"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem thêm "
+            >
+        </TextView>
+
+
+    </RelativeLayout >
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollview"
+        android:layout_below="@id/relativegenreandtopic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+    </HorizontalScrollView>
+</RelativeLayout>
