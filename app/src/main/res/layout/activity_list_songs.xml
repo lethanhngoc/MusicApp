@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+
     android:id="@+id/coordinatorlayout"
     tools:context="com.android.activity.ListSongsActivity">
-
+<!--    android:fitsSystemWindows="true"-->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarlayout"
         android:fitsSystemWindows="true"
@@ -48,12 +48,22 @@
             android:layout_height="200dp">
 
         </ImageView>
+        <ImageView
+            android:elevation="6dp"
+            android:src="@drawable/iconback"
+            android:id="@+id/imageviewback"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp">
+        </ImageView>
     </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingactionbutton"
         android:scaleType="fitXY"
+        app:fabSize="normal"
         android:backgroundTint="#a845de"
         android:src="@drawable/iconfloatingactionbutton"
         app:layout_behavior="@string/bottom_sheet_behavior"
@@ -71,7 +81,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RecyclerviewListSongs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             >
         </androidx.recyclerview.widget.RecyclerView>
     </androidx.core.widget.NestedScrollView>

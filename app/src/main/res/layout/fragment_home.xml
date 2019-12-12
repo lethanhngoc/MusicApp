@@ -26,13 +26,19 @@
 
         </fragment>
         <fragment
-            android:name="com.android.fragment.FragmentGenreAndTopic"
-            android:id="@+id/fragmentgenreandtopic"
+        android:name="com.android.fragment.FragmentGenreAndTopic"
+        android:id="@+id/fragmentgenreandtopic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        </fragment>
+        <fragment
+            android:name="com.android.fragment.FragmentSongHot"
+            android:id="@+id/fragmentsonghot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         </fragment>
-
     </LinearLayout>
 
 
