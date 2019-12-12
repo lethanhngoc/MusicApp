@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="5dp">
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:text="1"
+        android:textSize="20sp"
+        android:layout_margin="15dp"
+        android:id="@+id/textviewlistindex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/textviewnamesong"
+            android:textColor="#030303"
+            android:text="Ten Ca Khuc"
+            android:textSize="20sp"
+            android:layout_toRightOf="@id/textviewlistindex"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:maxWidth="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="Ca Si"
+            android:textSize="20sp"
+            android:textColor="#979797"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_toRightOf="@id/textviewlistindex"
+            android:layout_below="@id/textviewnamesong"
+            android:id="@+id/textviewnamesinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:src="@drawable/iconlove"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/imageviewlikelistsongs"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+        </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
