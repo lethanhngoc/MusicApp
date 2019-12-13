@@ -5,11 +5,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.adapter.AlbumAdapter;
 import com.android.mainapp.R;
 import com.android.model.Album;
 import com.android.service.APIService;
@@ -25,11 +29,16 @@ import retrofit2.Response;
 public class FragmentAlbumHot extends Fragment {
 
     View view;
+    RecyclerView recyclerViewalbum;
+    TextView txtxemthemalbum;
+    AlbumAdapter albumAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.fragment_album_hot,container,false);
+        recyclerViewalbum=view.findViewById(R.id.recyclerviewAlbum);
+        txtxemthemalbum=view.findViewById(R.id.textviewxemthemAlbum);
         GetData();
         return view;
     }
@@ -41,7 +50,10 @@ public class FragmentAlbumHot extends Fragment {
             @Override
             public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
                 ArrayList<Album> albumArrayList= (ArrayList<Album>) response.body();
-                Log.d("Album Hot",albumArrayList.get(0).getTenAlbum());
+                albumAdapter = new AlbumAdapter(getActivity(),albumArrayList);
+                LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getActivity());
+                recyclerViewalbum.setLayoutManager(linearLayoutManager);
+                recyclerViewalbum.setAdapter(albumAdapter);
             }
 
             @Override
