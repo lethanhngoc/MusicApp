@@ -41,7 +41,7 @@ public class FragmentAlbumHot extends Fragment {
             @Override
             public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
                 ArrayList<Album> albumArrayList= (ArrayList<Album>) response.body();
-                Log.d("Albumhot",albumArrayList.get(0).getTenAlbum());
+                Log.d("Album Hot",albumArrayList.get(0).getTenAlbum());
             }
 
             @Override
