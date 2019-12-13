@@ -39,6 +39,13 @@
             android:layout_height="wrap_content">
 
         </fragment>
+
+        <fragment
+            android:name="com.android.fragment.FragmentAlbumHot"
+            android:id="@+id/fragmentalbum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </fragment>
     </LinearLayout>
 
 
