@@ -1,6 +1,7 @@
 package com.android.service;
 
 import com.android.model.Advertisement;
+import com.android.model.Album;
 import com.android.model.ChuDeVaTheLoaiTrongNgay;
 import com.android.model.Playlist;
 import com.android.model.Song;
@@ -30,4 +31,8 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("ListSongs.php")
     Call<List<Song>> GetListSongsForAds(@Field("idquangcao") String idquangcao);
+
+    @GET("albumhot.php")
+    Call<List<Album>> GetAlbumHot();
+
 }
