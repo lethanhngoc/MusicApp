@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.android.adapter.ListSongAdapter;
 import com.android.mainapp.R;
 import com.android.model.Advertisement;
+import com.android.model.Playlist;
 import com.android.model.Song;
 import com.android.service.APIService;
 import com.android.service.Dataservice;
@@ -51,18 +52,42 @@ public class ListSongsActivity extends AppCompatActivity {
     ImageView imgBack;
     ArrayList<Song> songArrayList;
     ListSongAdapter listSongAdapter;
+    Playlist playlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_songs);
 
-        DateIntent();
+        DataIntent();
         Anhxa();
         init();
         if(advertisement != null && !advertisement.getTenBaiHat().equals("")){
             setValueInView(advertisement.getTenBaiHat(),advertisement.getHinhBaiHat());
             GetDataQuangcao(advertisement.getIdQuangCao());
         }
+        if(playlist != null && !playlist.getTen().equals("")){
+            setValueInView(playlist.getTen(),playlist.getHinhPlaylist());
+            GetDataPlayList(playlist.getIdPlaylist());
+        }
+    }
+
+    private void GetDataPlayList(String idplaylist) {
+        Dataservice dataservice = APIService.getService();
+        Call<List<Song>> callback = dataservice.GetListSongsForPlayList(idplaylist);
+        callback.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                songArrayList = (ArrayList<Song>) response.body();
+                listSongAdapter = new ListSongAdapter(ListSongsActivity.this,songArrayList);
+                recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
+                recyclerViewListSongs.setAdapter(listSongAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void GetDataQuangcao(String idquangcao) {
@@ -122,12 +147,16 @@ public class ListSongsActivity extends AppCompatActivity {
         imgBack                     = findViewById(R.id.imageviewback);
     }
 
-    private void DateIntent() {
+    private void DataIntent() {
         Intent intent = getIntent();
         if(intent != null){
             if(intent.hasExtra("banner")){
                 advertisement = (Advertisement) intent.getSerializableExtra("banner");
                 Toast.makeText(this,advertisement.getTenBaiHat(), Toast.LENGTH_LONG).show();
+            }
+            if(intent.hasExtra("itemplaylist")){
+                playlist = (Playlist) intent.getSerializableExtra("itemplaylist");
+//                Toast.makeText(this,playlist.getTenBaiHat(), Toast.LENGTH_LONG).show();
             }
         }
     }
