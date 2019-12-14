@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> {
+public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder>{
 
     Context context;
     ArrayList<Album> mangAlbum;
@@ -24,6 +24,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     public AlbumAdapter(Context context, ArrayList<Album> mangAlbum) {
         this.context = context;
         this.mangAlbum = mangAlbum;
+
     }
 
     @NonNull
