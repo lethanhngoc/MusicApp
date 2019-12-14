@@ -38,5 +38,7 @@ public interface Dataservice {
   
     @GET("albumhot.php")
     Call<List<Album>> GetAlbumHot();
-  
+
+    @GET("danhsachplaylist.php")
+    Call<List<Playlist>> GetDanhSachCacPlayList();
 }
