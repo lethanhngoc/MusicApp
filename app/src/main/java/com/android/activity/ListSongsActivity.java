@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.android.adapter.ListSongAdapter;
 import com.android.mainapp.R;
 import com.android.model.Advertisement;
+import com.android.model.Album;
 import com.android.model.Playlist;
 import com.android.model.Song;
 import com.android.model.TheLoai;
@@ -55,6 +56,8 @@ public class ListSongsActivity extends AppCompatActivity {
     ListSongAdapter listSongAdapter;
     Playlist playlist;
     TheLoai theLoai;
+    Album album;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +78,30 @@ public class ListSongsActivity extends AppCompatActivity {
             setValueInView(theLoai.getGenreName(),theLoai.getGenreThumb());
             GetDataTheLoai(theLoai.getGenreId());
         }
+        if(album!=null && !album.getTenAlbum().equals("")){
+            setValueInView(album.getTenAlbum(),album.getHinhanhAlbum());
+            GetDataAlbum(album.getIdAlbum());
+        }
+    }
+
+    private void GetDataAlbum(String idAlbum) {
+        Dataservice dataservice=APIService.getService();
+        Call<List<Song>> callback =dataservice.GetDanhsachbaihattheoalbum(idAlbum);
+        callback.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                songArrayList = (ArrayList<Song>) response.body();
+                Log.d("idtheloaibaihat",songArrayList.size()+"");
+                listSongAdapter = new ListSongAdapter(ListSongsActivity.this,songArrayList);
+                recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
+                recyclerViewListSongs.setAdapter(listSongAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void GetDataTheLoai(String idtheloai){
@@ -190,6 +217,9 @@ public class ListSongsActivity extends AppCompatActivity {
             if(intent.hasExtra("idtheloai")){
                 Log.d("idtheloai",intent.toString());
                 theLoai= (TheLoai) intent.getSerializableExtra("idtheloai");
+            }
+            if(intent.hasExtra("album")){
+                album= (Album) intent.getSerializableExtra("album");
             }
         }
     }

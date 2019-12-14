@@ -2,9 +2,11 @@ package com.android.service;
 
 import com.android.model.Advertisement;
 import com.android.model.Album;
+import com.android.model.ChuDe;
 import com.android.model.ChuDeVaTheLoaiTrongNgay;
 import com.android.model.Playlist;
 import com.android.model.Song;
+import com.android.model.TheLoai;
 
 import java.util.List;
 
@@ -46,5 +48,23 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("ListSongs.php")
     Call<List<Song>> GetDanhsachbaihattheochude(@Field("idtheloai") String idtheloai);
-  
+
+    @GET("tatcachude.php")
+    Call<List<ChuDe>> GetAllChuDe();
+
+    @FormUrlEncoded
+    @POST("theloaitheochude.php")
+    Call<List<TheLoai>> GetTheloaitheochude(@Field("idchude") String idchude);
+
+    @GET("tatcaalbum.php")
+    Call<List<Album>> GetAllAlbum();
+
+    @FormUrlEncoded
+    @POST("ListSongs.php")
+    Call<List<Song>> GetDanhsachbaihattheoalbum(@Field("idalbum") String idalbum);
+
+    @FormUrlEncoded
+    @POST("updateluotthich.php")
+    Call<String> UpdateLuotThich(@Field("luotthich") String luotthich, @Field("idbaihat") String idbaihat);
+
 }
