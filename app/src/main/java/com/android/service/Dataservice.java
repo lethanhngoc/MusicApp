@@ -38,5 +38,9 @@ public interface Dataservice {
   
     @GET("albumhot.php")
     Call<List<Album>> GetAlbumHot();
+
+    @FormUrlEncoded
+    @POST("ListSongs.php")
+    Call<List<Song>> GetDanhsachbaihattheochude(@Field("idtheloai") String idtheloai);
   
 }

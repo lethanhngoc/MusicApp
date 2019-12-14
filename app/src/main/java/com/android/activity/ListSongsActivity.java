@@ -23,6 +23,7 @@ import com.android.mainapp.R;
 import com.android.model.Advertisement;
 import com.android.model.Playlist;
 import com.android.model.Song;
+import com.android.model.TheLoai;
 import com.android.service.APIService;
 import com.android.service.Dataservice;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -53,6 +54,7 @@ public class ListSongsActivity extends AppCompatActivity {
     ArrayList<Song> songArrayList;
     ListSongAdapter listSongAdapter;
     Playlist playlist;
+    TheLoai theLoai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +71,30 @@ public class ListSongsActivity extends AppCompatActivity {
             setValueInView(playlist.getTen(),playlist.getHinhPlaylist());
             GetDataPlayList(playlist.getIdPlaylist());
         }
+        if(theLoai!=null && !theLoai.getGenreName().equals("")){
+            setValueInView(theLoai.getGenreName(),theLoai.getGenreThumb());
+            GetDataTheLoai(theLoai.getGenreId());
+        }
+    }
+
+    private void GetDataTheLoai(String idtheloai){
+        Dataservice dataservice=APIService.getService();
+        Call<List<Song>> callback =dataservice.GetDanhsachbaihattheochude(idtheloai);
+        callback.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                songArrayList = (ArrayList<Song>) response.body();
+                Log.d("idtheloaibaihat",songArrayList.size()+"");
+                listSongAdapter = new ListSongAdapter(ListSongsActivity.this,songArrayList);
+                recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
+                recyclerViewListSongs.setAdapter(listSongAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void GetDataPlayList(String idplaylist) {
@@ -96,7 +122,9 @@ public class ListSongsActivity extends AppCompatActivity {
         callback.enqueue(new Callback<List<Song>>() {
             @Override
             public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+
                songArrayList = (ArrayList<Song>) response.body();
+
                listSongAdapter =  new ListSongAdapter(ListSongsActivity.this,songArrayList);
                 recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
                 recyclerViewListSongs.setAdapter(listSongAdapter);
@@ -153,10 +181,15 @@ public class ListSongsActivity extends AppCompatActivity {
             if(intent.hasExtra("banner")){
                 advertisement = (Advertisement) intent.getSerializableExtra("banner");
                 Toast.makeText(this,advertisement.getTenBaiHat(), Toast.LENGTH_LONG).show();
+
             }
             if(intent.hasExtra("itemplaylist")){
                 playlist = (Playlist) intent.getSerializableExtra("itemplaylist");
 //                Toast.makeText(this,playlist.getTenBaiHat(), Toast.LENGTH_LONG).show();
+            }
+            if(intent.hasExtra("idtheloai")){
+                Log.d("idtheloai",intent.toString());
+                theLoai= (TheLoai) intent.getSerializableExtra("idtheloai");
             }
         }
     }

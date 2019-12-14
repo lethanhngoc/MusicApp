@@ -3,7 +3,9 @@ package com.android.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TheLoai {
+import java.io.Serializable;
+
+public class TheLoai implements Serializable {
 
 @SerializedName("Genre_Id")
 @Expose
