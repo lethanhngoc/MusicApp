@@ -88,6 +88,8 @@ public class ListSongsActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListSongsActivity.this,songArrayList);
                 recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
                 recyclerViewListSongs.setAdapter(listSongAdapter);
+
+                eventClick();
             }
 
             @Override
@@ -107,6 +109,7 @@ public class ListSongsActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListSongsActivity.this,songArrayList);
                 recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
                 recyclerViewListSongs.setAdapter(listSongAdapter);
+                eventClick();
             }
 
             @Override
@@ -128,7 +131,7 @@ public class ListSongsActivity extends AppCompatActivity {
                listSongAdapter =  new ListSongAdapter(ListSongsActivity.this,songArrayList);
                 recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
                 recyclerViewListSongs.setAdapter(listSongAdapter);
-
+                eventClick();
             }
 
             @Override
@@ -162,7 +165,7 @@ public class ListSongsActivity extends AppCompatActivity {
         });
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
-
+        floatingActionButton.setEnabled(false);
     }
 
     private void Anhxa() {
@@ -192,5 +195,18 @@ public class ListSongsActivity extends AppCompatActivity {
                 theLoai= (TheLoai) intent.getSerializableExtra("idtheloai");
             }
         }
+    }
+
+    //Chua them vao GetAlbum, GetChude
+    private void eventClick(){
+        floatingActionButton.setEnabled(true);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListSongsActivity.this,PlaySongActivity.class);
+                intent.putExtra("cacbaihat",songArrayList);
+                startActivity(intent);
+            }
+        });
     }
 }
