@@ -1,6 +1,7 @@
 package com.android.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.activity.PlaySongActivity;
 import com.android.mainapp.R;
 import com.android.model.Song;
 import com.android.service.APIService;
@@ -66,6 +68,14 @@ public class SonghotAdapter extends RecyclerView.Adapter<SonghotAdapter.ViewHold
             txtcasi = itemView.findViewById(R.id.textviewsingersonghot);
             imghinh = itemView.findViewById(R.id.imageviewsonghot);
             imgluotthich = itemView.findViewById(R.id.imageviewluotthich);
+
+            //Bai53
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlaySongActivity.class);
+                    intent.putExtra("cakhuc",songArrayList.get(getPosition()));
+                    context.startActivity(intent);
             imgluotthich.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

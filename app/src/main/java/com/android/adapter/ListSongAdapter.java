@@ -1,6 +1,7 @@
 package com.android.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.activity.PlaySongActivity;
 import com.android.mainapp.R;
 import com.android.model.Song;
 
@@ -52,11 +54,22 @@ public class ListSongAdapter extends  RecyclerView.Adapter<ListSongAdapter.ViewH
         ImageView imglike;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtindex        = itemView.findViewById(R.id.textviewlistindex);
-            txtnamesong     = itemView.findViewById(R.id.textviewnamesong);
-            txtnamesinger   = itemView.findViewById(R.id.textviewnamesinger);
-            imglike         = itemView.findViewById(R.id.imageviewlikelistsongs);
-        }
+            txtindex = itemView.findViewById(R.id.textviewlistindex);
+            txtnamesong = itemView.findViewById(R.id.textviewnamesong);
+            txtnamesinger = itemView.findViewById(R.id.textviewnamesinger);
+            imglike = itemView.findViewById(R.id.imageviewlikelistsongs);
 
+
+            //Bai53
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlaySongActivity.class);
+                    intent.putExtra("cakhuc",songArrayList.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
+
+        }
     }
 }
