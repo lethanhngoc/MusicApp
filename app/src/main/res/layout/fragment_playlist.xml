@@ -14,13 +14,17 @@
         android:text="NHỊP ĐIỆU CẢM XÚC"
         android:id="@+id/textviewtitleplaylist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></TextView>
+        android:layout_height="wrap_content">
+
+    </TextView>
 
     <ListView
         android:layout_below="@id/textviewtitleplaylist"
         android:id="@+id/listviewplaylist"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content">
+
+    </ListView>
 
     <TextView
         android:text="Xem thêm playlists"
@@ -37,5 +41,7 @@
         android:layout_marginBottom="8dp"
         android:textColor="#0a0a0a"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></TextView>
+        android:layout_height="wrap_content">
+
+    </TextView>
 </RelativeLayout>

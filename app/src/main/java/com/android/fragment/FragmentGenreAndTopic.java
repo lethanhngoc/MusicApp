@@ -16,6 +16,9 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.android.activity.DanhsachcacplaylistActivity;
+import com.android.activity.DanhsachtatcachudeActivity;
+import com.android.activity.DanhsachtheloaitheochudeActivity;
 import com.android.activity.ListSongsActivity;
 import com.android.mainapp.R;
 import com.android.model.ChuDe;
@@ -43,6 +46,14 @@ public class FragmentGenreAndTopic extends Fragment {
         view = inflater.inflate(R.layout.fragment_genre_topic, container,false);
         horizontalScrollView =  view.findViewById(R.id.horizontalScrollview);
         txtseemore = view.findViewById(R.id.textviewseemore);
+        txtseemore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(), DanhsachtatcachudeActivity.class);
+                startActivity(intent);
+
+            }
+        });
         GetData();
         return view;
     }
@@ -78,6 +89,15 @@ public class FragmentGenreAndTopic extends Fragment {
                     cardView.setLayoutParams(layout);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+                    final int finalI = i;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent= new Intent(getActivity(), DanhsachtheloaitheochudeActivity.class);
+                            intent.putExtra("chude",topicArrayList.get(finalI));
+                            startActivity(intent);
+                        }
+                    });
                 }
                 for(int j = 0 ; j < (genreArrayList.size()); j++){
                     CardView cardView = new CardView(getActivity());
