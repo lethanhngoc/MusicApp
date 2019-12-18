@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:id="@+id/coordinatorlayout"
     tools:context="com.android.activity.ListSongsActivity">
 <!--    android:fitsSystemWindows="true"-->
@@ -15,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp">
     <com.google.android.material.appbar.CollapsingToolbarLayout
-        app:collapsedTitleGravity="center|bottom"
+        app:expandedTitleGravity="center|bottom"
         app:expandedTitleMarginBottom="33dp"
         android:background="@mipmap/ic_launcher"
         android:fitsSystemWindows="true"
@@ -47,15 +46,6 @@
             android:layout_width="200dp"
             android:layout_height="200dp">
 
-        </ImageView>
-        <ImageView
-            android:elevation="6dp"
-            android:src="@drawable/iconback"
-            android:id="@+id/imageviewback"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp">
         </ImageView>
     </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -22,14 +23,12 @@ import android.widget.Toast;
 import com.android.adapter.ViewPagerPlayListSongs;
 import com.android.fragment.FragmentMusicDisc;
 import com.android.fragment.FragmentPlayListSongs;
-import com.android.fragment.FragmentPlaylist;
 import com.android.mainapp.R;
 import com.android.model.Song;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class PlaySongActivity extends AppCompatActivity {
@@ -39,7 +38,6 @@ public class PlaySongActivity extends AppCompatActivity {
     SeekBar sktime;
     ImageButton imgplay,imgnext,imgprev,imgrepeat,imgrandom;
     ViewPager viewpagerplaynhac;
-    ImageView imgbackplaynhac;
     public static ArrayList<Song> arrSongs = new ArrayList<>();
     public static ViewPagerPlayListSongs adapternhac;
     FragmentMusicDisc fragmentMusicDisc;
@@ -55,8 +53,8 @@ public class PlaySongActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play_song);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        Init();
         GetDataFromIntent();
+        Init();
         evenClick();
 
     }
@@ -171,7 +169,7 @@ public class PlaySongActivity extends AppCompatActivity {
                         }
                         new PlayMp3().execute(arrSongs.get(pos).getLinkbaihat());
                         fragmentMusicDisc.Playnhac(arrSongs.get(pos).getHinhbaihat());
-//                        getSupportActionBar().setTitle(arrSongs.get(pos).getTenbaihat());
+                        getSupportActionBar().setTitle(arrSongs.get(pos).getTenbaihat());
                         UpdateTime();
                     }
                 }
@@ -215,7 +213,7 @@ public class PlaySongActivity extends AppCompatActivity {
                         }
                         new PlayMp3().execute(arrSongs.get(pos).getLinkbaihat());
                         fragmentMusicDisc.Playnhac(arrSongs.get(pos).getHinhbaihat());
-//                        getSupportActionBar().setTitle(arrSongs.get(pos).getTenbaihat());
+                        getSupportActionBar().setTitle(arrSongs.get(pos).getTenbaihat());
                         UpdateTime();
                     }
                 }
@@ -242,7 +240,7 @@ public class PlaySongActivity extends AppCompatActivity {
             if(intent.hasExtra("cakhuc")){
                 Song song = intent.getParcelableExtra("cakhuc");
                 arrSongs.add(song);
-                Toast.makeText(this,song.getTenbaihat(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,song.getTenbaihat(),Toast.LENGTH_SHORT).show();
             }
             if(intent.hasExtra("cacbaihat")){
                 ArrayList<Song>  SongArrayList =intent.getParcelableArrayListExtra("cacbaihat");
@@ -262,16 +260,19 @@ public class PlaySongActivity extends AppCompatActivity {
         imgrepeat               = findViewById(R.id.imageviewbuttonrepeat);
         imgrandom               = findViewById(R.id.imageviewbuttonsuffle);
         viewpagerplaynhac       = findViewById(R.id.viewpagerplaynhac);
-        imgbackplaynhac         = findViewById(R.id.imageviewbackplaynhac);
 
-        imgbackplaynhac.setOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(toolbarplaynhac);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarplaynhac.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-//                mediaPlayer.stop();
-//                arrSongs.clear();
+                mediaPlayer.stop();
+                arrSongs.clear();
             }
         });
+        toolbarplaynhac.setTitleTextColor(Color.WHITE);
+
         fragmentMusicDisc = new FragmentMusicDisc();
         fragmentPlayListSongs =  new FragmentPlayListSongs();
          adapternhac = new ViewPagerPlayListSongs(getSupportFragmentManager());
@@ -282,7 +283,7 @@ public class PlaySongActivity extends AppCompatActivity {
             //Xu ly su kien phat nhac init
         fragmentMusicDisc = (FragmentMusicDisc) adapternhac.getItem(1);
         if(arrSongs.size()>0){
-//            getSupportActionBar().setTitle(arrSongs.get(0).getTenbaihat());
+            getSupportActionBar().setTitle(arrSongs.get(0).getTenbaihat());
             new PlayMp3().execute(arrSongs.get(0).getLinkbaihat());
             imgplay.setImageResource(R.drawable.iconpause);
         }
@@ -375,7 +376,7 @@ public class PlaySongActivity extends AppCompatActivity {
                         }
                         new PlayMp3().execute(arrSongs.get(pos).getLinkbaihat());
                         fragmentMusicDisc.Playnhac(arrSongs.get(pos).getHinhbaihat());
-//                        getSupportActionBar().setTitle(arrSongs.get(pos).getTenbaihat());
+                        getSupportActionBar().setTitle(arrSongs.get(pos).getTenbaihat());
                     }
                 imgprev.setClickable(false);
                 imgnext.setClickable(false);

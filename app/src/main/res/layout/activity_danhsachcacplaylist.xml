@@ -12,21 +12,7 @@
         android:id="@+id/toolbardanhsachcacplaylist"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
-        <ImageView
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:elevation="6dp"
-            android:id="@+id/imageviewbackseemoreplaylist"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
-        <TextView
-            android:text="Playlists"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/textviewseemoretitleplaylist"
-            android:layout_marginLeft="50dp"
-            android:textColor="@color/colorPurple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recyclerviewdanhsachcacplaylist"

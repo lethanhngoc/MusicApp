@@ -15,12 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
-        <ImageView
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            android:elevation="6dp"
-            android:id="@+id/imageviewbackplaynhac"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+
     </androidx.appcompat.widget.Toolbar>
     <androidx.viewpager.widget.ViewPager
         android:layout_weight="8"
