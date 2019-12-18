@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -62,7 +63,8 @@ public class ListSongsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_songs);
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         DataIntent();
         Anhxa();
         init();
@@ -95,6 +97,7 @@ public class ListSongsActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListSongsActivity.this,songArrayList);
                 recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
                 recyclerViewListSongs.setAdapter(listSongAdapter);
+                eventClick();
             }
 
             @Override
@@ -218,7 +221,7 @@ public class ListSongsActivity extends AppCompatActivity {
 //                Toast.makeText(this,playlist.getTenBaiHat(), Toast.LENGTH_LONG).show();
             }
             if(intent.hasExtra("idtheloai")){
-                Log.d("idtheloai",intent.toString());
+//                Log.d("idtheloai",intent.toString());
                 theLoai= (TheLoai) intent.getSerializableExtra("idtheloai");
             }
             if(intent.hasExtra("album")){
@@ -227,7 +230,6 @@ public class ListSongsActivity extends AppCompatActivity {
         }
     }
 
-    //Chua them vao GetAlbum, GetChude
     private void eventClick(){
         floatingActionButton.setEnabled(true);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
