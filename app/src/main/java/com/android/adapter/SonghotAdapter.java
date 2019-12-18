@@ -28,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SonghotAdapter extends RecyclerView.Adapter<SonghotAdapter.ViewHolder>{
+public class SonghotAdapter extends RecyclerView.Adapter<SonghotAdapter.ViewHolder> {
     Context context;
     ArrayList<Song> songArrayList;
 
@@ -41,7 +41,7 @@ public class SonghotAdapter extends RecyclerView.Adapter<SonghotAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.dong_song_hot,parent,false);
+        View view = inflater.inflate(R.layout.dong_song_hot, parent, false);
         return new ViewHolder(view);
     }
 
@@ -59,10 +59,11 @@ public class SonghotAdapter extends RecyclerView.Adapter<SonghotAdapter.ViewHold
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtten, txtcasi;
-        ImageView imghinh,imgluotthich;
-        public ViewHolder(View itemView){
+        ImageView imghinh, imgluotthich;
+
+        public ViewHolder(View itemView) {
             super(itemView);
             txtten = itemView.findViewById(R.id.textviewnamesonghot);
             txtcasi = itemView.findViewById(R.id.textviewsingersonghot);
@@ -74,31 +75,34 @@ public class SonghotAdapter extends RecyclerView.Adapter<SonghotAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, PlaySongActivity.class);
-                    intent.putExtra("cakhuc",songArrayList.get(getPosition()));
+                    intent.putExtra("cakhuc", songArrayList.get(getPosition()));
                     context.startActivity(intent);
-            imgluotthich.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    imgluotthich.setImageResource(R.drawable.iconloved);
-                    Dataservice dataservice= APIService.getService();
-                    Call<String> callback=dataservice.UpdateLuotThich("1","2");
-                    callback.enqueue(new Callback<String>() {
+                    imgluotthich.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            String ketqua=response.body();
-                            System.err.println("error******: "+ketqua);
-                            if(ketqua.equals("1")){
-                                Toast.makeText(context,"Da thich", Toast.LENGTH_SHORT).show();
-                            }else {
-                                Toast.makeText(context,"Loi!!", Toast.LENGTH_SHORT).show();
-                            }
+                        public void onClick(View v) {
+                            imgluotthich.setImageResource(R.drawable.iconloved);
+                            Dataservice dataservice = APIService.getService();
+                            Call<String> callback = dataservice.UpdateLuotThich("1", "2");
+                            callback.enqueue(new Callback<String>() {
+                                @Override
+                                public void onResponse(Call<String> call, Response<String> response) {
+                                    String ketqua = response.body();
+                                    System.err.println("error******: " + ketqua);
+                                    if (ketqua.equals("1")) {
+                                        Toast.makeText(context, "Da thich", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(context, "Loi!!", Toast.LENGTH_SHORT).show();
+                                    }
 
-                        }
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
+                                }
+
+                                @Override
+                                public void onFailure(Call<String> call, Throwable t) {
+                                }
+                            });
+                            imgluotthich.setEnabled(false);
                         }
                     });
-                    imgluotthich.setEnabled(false);
                 }
             });
         }

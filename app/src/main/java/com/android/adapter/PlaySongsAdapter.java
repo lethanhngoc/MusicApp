@@ -22,7 +22,7 @@ public class PlaySongsAdapter extends RecyclerView.Adapter<PlaySongsAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.dong_list_songs,parent,false);
+        View view = inflater.inflate(R.layout.dong_play_bai_hat,parent,false);
 
         return new ViewHolder(view);
     }
