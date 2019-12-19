@@ -52,7 +52,6 @@ public class ListSongsActivity extends AppCompatActivity {
     RecyclerView recyclerViewListSongs;
     FloatingActionButton floatingActionButton;
     ImageView imgListSong;
-    ImageView imgBack;
     ArrayList<Song> songArrayList;
     ListSongAdapter listSongAdapter;
     Playlist playlist;
@@ -187,12 +186,15 @@ public class ListSongsActivity extends AppCompatActivity {
     }
 
     private void init() {
-        imgBack.setOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
         floatingActionButton.setEnabled(false);
@@ -205,7 +207,6 @@ public class ListSongsActivity extends AppCompatActivity {
         recyclerViewListSongs       = findViewById(R.id.RecyclerviewListSongs);
         floatingActionButton        = findViewById(R.id.floatingactionbutton);
         imgListSong                 = findViewById(R.id.imageviewlistsongs);
-        imgBack                     = findViewById(R.id.imageviewback);
     }
 
     private void DataIntent() {

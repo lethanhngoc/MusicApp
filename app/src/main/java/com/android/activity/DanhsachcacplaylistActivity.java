@@ -29,7 +29,6 @@ public class DanhsachcacplaylistActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerViewdanhsachcacplaylist;
     ListPlaylistAdapter listPlaylistAdapter;
-    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,27 +59,20 @@ public class DanhsachcacplaylistActivity extends AppCompatActivity {
 
     private void init() {
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Play Lists");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorPurple));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setTitle("Play Lists");
-//        toolbar.setTitleTextColor(getResources().getColor(R.color.colorPurple));
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
     }
 
     private void anhxa() {
         toolbar                             = findViewById(R.id.toolbardanhsachcacplaylist);
         recyclerViewdanhsachcacplaylist     = findViewById(R.id.Recyclerviewdanhsachcacplaylist);
-        imageView                           = findViewById(R.id.imageviewbackseemoreplaylist);
     }
 }

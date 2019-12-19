@@ -43,4 +43,5 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:design:27.0.2'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+
 }
