@@ -12,10 +12,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,12 +75,16 @@ public class PlaySongActivity extends AppCompatActivity {
         imgplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mediaPlayer.isPlaying()){
-                    mediaPlayer.pause();
-                    imgplay.setImageResource(R.drawable.iconplay);
-                }else{
-                    mediaPlayer.start();
-                    imgplay.setImageResource(R.drawable.iconpause);
+                if(mediaPlayer!=null){
+                    if(mediaPlayer.isPlaying()){
+                        mediaPlayer.pause();
+                        imgplay.setImageResource(R.drawable.iconplay);
+                    }else{
+                        mediaPlayer.start();
+                        imgplay.setImageResource(R.drawable.iconpause);
+                    }
+                }else {
+                    System.out.println("NULL exception");
                 }
             }
         });
@@ -114,6 +116,7 @@ public class PlaySongActivity extends AppCompatActivity {
                 }
             }
         });
+
         imgrandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -250,6 +253,9 @@ public class PlaySongActivity extends AppCompatActivity {
         {
             if(intent.hasExtra("cakhuc")){
                 Song song = intent.getParcelableExtra("cakhuc");
+//                Bundle extras=intent.getExtras();
+//                Song song=extras.get("cakhuc");
+
                 arrSongs.add(song);
 //                Toast.makeText(this,song.getTenbaihat(),Toast.LENGTH_SHORT).show();
             }
@@ -275,6 +281,8 @@ public class PlaySongActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbarplaynhac);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setTitle("Play Lists");
+        toolbarplaynhac.setTitleTextColor(getResources().getColor(R.color.colorPurple));
         toolbarplaynhac.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -284,7 +292,6 @@ public class PlaySongActivity extends AppCompatActivity {
             }
         });
         toolbarplaynhac.setTitleTextColor(Color.WHITE);
-
         fragmentMusicDisc = new FragmentMusicDisc();
         fragmentPlayListSongs =  new FragmentPlayListSongs();
          adapternhac = new ViewPagerPlayListSongs(getSupportFragmentManager());
@@ -295,8 +302,11 @@ public class PlaySongActivity extends AppCompatActivity {
             //Xu ly su kien phat nhac init
         fragmentMusicDisc = (FragmentMusicDisc) adapternhac.getItem(1);
         if(arrSongs.size()>0){
-            getSupportActionBar().setTitle(arrSongs.get(0).getTenbaihat());
+//            getSupportActionBar().setTitle(arrSongs.get(0).getTenbaihat());
+            String link=arrSongs.get(0).getLinkbaihat();
             new PlayMp3().execute(arrSongs.get(0).getLinkbaihat());
+
+//            new PlayMp3().execute("/storage/emulated/0/Download/ThuanTheoYTroi-BuiAnhTuan-6150266 (1).mp3");
             imgplay.setImageResource(R.drawable.iconpause);
         }
 

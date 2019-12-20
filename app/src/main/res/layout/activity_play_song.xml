@@ -15,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
-
     </androidx.appcompat.widget.Toolbar>
     <androidx.viewpager.widget.ViewPager
         android:layout_weight="8"

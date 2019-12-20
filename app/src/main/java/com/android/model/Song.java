@@ -1,5 +1,6 @@
 package com.android.model;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -36,6 +37,10 @@ private String luotthich;
         luotthich = in.readString();
     }
 
+    protected Song(String tenbaihat, String uri,String thumb){
+
+    }
+
     public static final Creator<Song> CREATOR = new Creator<Song>() {
         @Override
         public Song createFromParcel(Parcel in) {
@@ -47,6 +52,14 @@ private String luotthich;
             return new Song[size];
         }
     };
+
+    public Song(String id, String songName, String singerName, String songUri, Uri thumbUri) {
+        idbaihat=id;
+        tenbaihat=songName;
+        casi=singerName;
+        linkbaihat=songUri;
+        hinhbaihat=thumbUri.toString();
+    }
 
     public String getIdbaihat() {
 return idbaihat;

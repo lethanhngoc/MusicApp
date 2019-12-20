@@ -12,7 +12,16 @@
         android:id="@+id/toolbardanhsachcacplaylist"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
-
+        <TextView
+            android:text="Playlists"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/textviewseemoretitleplaylist"
+            android:layout_marginLeft="50dp"
+            android:textColor="@color/colorPurple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+>>>>>>> Stashed changes
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recyclerviewdanhsachcacplaylist"

@@ -154,9 +154,7 @@ public class ListSongsActivity extends AppCompatActivity {
         callback.enqueue(new Callback<List<Song>>() {
             @Override
             public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
-
                songArrayList = (ArrayList<Song>) response.body();
-
                listSongAdapter =  new ListSongAdapter(ListSongsActivity.this,songArrayList);
                 recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
                 recyclerViewListSongs.setAdapter(listSongAdapter);
@@ -186,6 +184,12 @@ public class ListSongsActivity extends AppCompatActivity {
     }
 
     private void init() {
+        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+        floatingActionButton.setEnabled(false);
+
+        toolbar= findViewById(R.id.toolbardanhsach);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -195,15 +199,12 @@ public class ListSongsActivity extends AppCompatActivity {
             }
         });
 
-        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
-        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
-        floatingActionButton.setEnabled(false);
     }
 
     private void Anhxa() {
         coordinatorLayout           = findViewById(R.id.coordinatorlayout);
         collapsingToolbarLayout     = findViewById((R.id.collapsingtoolbar));
-        toolbar                     = findViewById(R.id.toolbarlist);
+        toolbar                     = findViewById(R.id.toolbardanhsach);
         recyclerViewListSongs       = findViewById(R.id.RecyclerviewListSongs);
         floatingActionButton        = findViewById(R.id.floatingactionbutton);
         imgListSong                 = findViewById(R.id.imageviewlistsongs);

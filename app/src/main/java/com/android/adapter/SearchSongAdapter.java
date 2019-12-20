@@ -89,7 +89,7 @@ public class SearchSongAdapter extends RecyclerView.Adapter<SearchSongAdapter.Vi
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
                             String ketqua = response.body();
-                            if(ketqua.equals("Success")){
+                            if(ketqua.equals("1")){
                                 Toast.makeText(context,"Da Thich", Toast.LENGTH_SHORT).show();
                             }else{
                                 Toast.makeText(context,"Loi!",Toast.LENGTH_SHORT).show();

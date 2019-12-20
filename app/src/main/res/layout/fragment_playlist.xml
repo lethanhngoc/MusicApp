@@ -23,7 +23,6 @@
         android:id="@+id/listviewplaylist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
     </ListView>
 
     <TextView
@@ -42,6 +41,5 @@
         android:textColor="#0a0a0a"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
     </TextView>
 </RelativeLayout>
