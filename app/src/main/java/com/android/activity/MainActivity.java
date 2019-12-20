@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.android.adapter.MainViewPagerAdapter;
 import com.android.fragment.FragmentHome;
+import com.android.fragment.FragmentSdCard;
 import com.android.fragment.FragmentSearch;
 import com.android.mainapp.R;
 
@@ -31,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
         MainViewPagerAdapter mainViewPagerAdapter=new MainViewPagerAdapter(getSupportFragmentManager());
         mainViewPagerAdapter.addFragment(new FragmentHome(),"Home");
         mainViewPagerAdapter.addFragment(new FragmentSearch(),"Search");
+        mainViewPagerAdapter.addFragment(new FragmentSdCard(),"SdCard");
         viewPager.setAdapter(mainViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.icontrangchu);
-        tabLayout.getTabAt(1).setIcon(R.drawable.icontimkiem);
+        tabLayout.getTabAt(0).setIcon(R.drawable.trangchu);
+        tabLayout.getTabAt(1).setIcon(R.drawable.timkiem);
+        tabLayout.getTabAt(2).setIcon(R.drawable.sdcard);
     }
 
     public void mapping(){

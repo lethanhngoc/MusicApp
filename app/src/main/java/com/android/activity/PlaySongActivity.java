@@ -36,7 +36,7 @@ public class PlaySongActivity extends AppCompatActivity {
     Toolbar toolbarplaynhac;
     TextView txtTimesong,txtTotaltimesong;
     SeekBar sktime;
-    ImageButton imgplay,imgnext,imgprev,imgrepeat,imgrandom;
+    ImageButton imgplay,imgnext,imgprev,imgrepeat,imgrandom,imgstop;
     ViewPager viewpagerplaynhac;
     public static ArrayList<Song> arrSongs = new ArrayList<>();
     public static ViewPagerPlayListSongs adapternhac;
@@ -84,6 +84,17 @@ public class PlaySongActivity extends AppCompatActivity {
                     mediaPlayer.start();
                     imgplay.setImageResource(R.drawable.iconpause);
                 }
+            }
+        });
+        imgstop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.stop();
+//                mediaPlayer.release();
+                getSupportActionBar().setTitle(arrSongs.get(pos).getTenbaihat());
+                new PlayMp3().execute(arrSongs.get(pos).getLinkbaihat());
+//                mediaPlayer.pause();
+                imgplay.setImageResource(R.drawable.iconpause);
             }
         });
         imgrepeat.setOnClickListener(new View.OnClickListener() {
@@ -182,7 +193,7 @@ public class PlaySongActivity extends AppCompatActivity {
                         imgprev.setClickable(true);
                         imgnext.setClickable(true);
                     }
-                },5000);
+                },2000);
             }
         });
         imgprev.setOnClickListener(new View.OnClickListener() {
@@ -226,7 +237,7 @@ public class PlaySongActivity extends AppCompatActivity {
                         imgprev.setClickable(true);
                         imgnext.setClickable(true);
                     }
-                },5000);
+                },2000);
             }
         });
     }
@@ -259,6 +270,7 @@ public class PlaySongActivity extends AppCompatActivity {
         imgprev                 = findViewById(R.id.imageviewbuttonprev);
         imgrepeat               = findViewById(R.id.imageviewbuttonrepeat);
         imgrandom               = findViewById(R.id.imageviewbuttonsuffle);
+        imgstop                 = findViewById(R.id.imageviewbuttonstop);
         viewpagerplaynhac       = findViewById(R.id.viewpagerplaynhac);
 
         setSupportActionBar(toolbarplaynhac);
