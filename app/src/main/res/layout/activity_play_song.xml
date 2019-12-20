@@ -75,41 +75,50 @@
                 android:scaleType="fitXY"
                 android:background="@null"
                 android:id="@+id/imageviewbuttonsuffle"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
             <ImageButton
                 android:src="@drawable/iconpreview"
                 android:scaleType="fitXY"
                 android:background="@null"
                 android:id="@+id/imageviewbuttonprev"
                 android:layout_marginRight="15dp"
-                android:layout_width="60dp"
-                android:layout_height="60dp"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
             <ImageButton
                 android:src="@drawable/iconplay"
                 android:scaleType="fitXY"
                 android:background="@null"
                 android:id="@+id/imageviewbuttonplay"
                 android:layout_marginRight="15dp"
-                android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageButton
+                android:src="@drawable/ic_stop_black_24dp"
+                android:scaleType="fitXY"
+                android:background="@null"
+                android:id="@+id/imageviewbuttonstop"
+                android:layout_marginRight="15dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
             <ImageButton
                 android:src="@drawable/iconnext"
                 android:scaleType="fitXY"
                 android:background="@null"
                 android:id="@+id/imageviewbuttonnext"
                 android:layout_marginRight="15dp"
-                android:layout_width="60dp"
-                android:layout_height="60dp"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
             <ImageButton
                 android:src="@drawable/iconrepeat"
                 android:scaleType="fitXY"
                 android:background="@null"
                 android:id="@+id/imageviewbuttonrepeat"
                 android:layout_marginRight="15dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

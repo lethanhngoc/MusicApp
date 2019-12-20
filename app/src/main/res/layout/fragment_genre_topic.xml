@@ -20,7 +20,7 @@
         </TextView>
         <TextView
             android:id="@+id/textviewseemore"
-            android:textColor="#913677"
+            android:textColor="#26A226"
             android:layout_alignParentRight="true"
             android:textSize="18sp"
             android:layout_width="wrap_content"

@@ -10,7 +10,7 @@
         android:id="@+id/imageviewbackgroundplaylist"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
-        android:layout_height="110dp"></ImageView>
+        android:layout_height="150dp"></ImageView>
 
     <View
         android:background="@drawable/custom_background_banner"
@@ -18,7 +18,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="110dp"></View>
+        android:layout_height="150dp"></View>
 
     <ImageView
         android:id="@+id/imageviewplaylist"
