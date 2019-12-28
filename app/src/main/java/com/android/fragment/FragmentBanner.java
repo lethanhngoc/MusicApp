@@ -33,45 +33,48 @@ public class FragmentBanner extends Fragment {
     CircleIndicator circleIndicator;
     BannerAdapter bannerAdapter;
     Runnable runnable;
-    Handler handler;
+    Handler  handler;
     int currentItem;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_banner, container, false);
+        view =inflater.inflate(R.layout.fragment_banner,container,false);
         mapping();
         GetData();
         return view;
     }
 
-    private void GetData() {
-        Dataservice dataservice = APIService.getService();
-        Call<List<Advertisement>> callback = dataservice.GetDataBanner();
+    private void GetData(){
+        Dataservice dataservice= APIService.getService();
+        Call<List<Advertisement>> callback=dataservice.GetDataBanner();
         callback.enqueue(new Callback<List<Advertisement>>() {
             @Override
             public void onResponse(Call<List<Advertisement>> call, Response<List<Advertisement>> response) {
-                ArrayList<Advertisement> banners = (ArrayList<Advertisement>) response.body();
+                ArrayList<Advertisement> banners= (ArrayList<Advertisement>) response.body();
 //                Log.d("BBB",banners.get(0).getTenBaiHat());
-                bannerAdapter = new BannerAdapter(getContext(), banners);
+                bannerAdapter=new BannerAdapter(getActivity(),banners);
                 viewPager.setAdapter(bannerAdapter);
                 circleIndicator.setViewPager(viewPager);
-                handler = new Handler();
-                runnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        if (viewPager.getAdapter() != null) {
+                handler=new Handler();
+
+                    runnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            if(viewPager.getAdapter() != null) {
                             currentItem = viewPager.getCurrentItem();
                             currentItem++;
+
                             if (currentItem >= viewPager.getAdapter().getCount()) {
                                 currentItem = 0;
                             }
+
                             viewPager.setCurrentItem(currentItem, true);
                             handler.postDelayed(runnable, 4500);
+                            }
                         }
-                    }
-                };
-                handler.postDelayed(runnable, 4500);
+                    };
+                    handler.postDelayed(runnable, 4500);
+
             }
 
             @Override
@@ -81,9 +84,9 @@ public class FragmentBanner extends Fragment {
         });
     }
 
-    private void mapping() {
-        viewPager = view.findViewById(R.id.viewpager);
-        circleIndicator = view.findViewById(R.id.indicatordefault);
+    private void mapping(){
+        viewPager=view.findViewById(R.id.viewpager);
+        circleIndicator=view.findViewById(R.id.indicatordefault);
     }
 
 }

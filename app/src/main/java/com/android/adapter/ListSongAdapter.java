@@ -18,6 +18,7 @@ import com.android.model.Song;
 import java.util.ArrayList;
 
 public class ListSongAdapter extends  RecyclerView.Adapter<ListSongAdapter.ViewHolder> {
+
     Context context;
     ArrayList<Song> songArrayList;
 
@@ -31,6 +32,7 @@ public class ListSongAdapter extends  RecyclerView.Adapter<ListSongAdapter.ViewH
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from((context));
         View view = inflater.inflate(R.layout.dong_list_songs ,parent,false);
+
         return new ViewHolder(view);
     }
 
@@ -40,8 +42,6 @@ public class ListSongAdapter extends  RecyclerView.Adapter<ListSongAdapter.ViewH
         holder.txtnamesinger.setText(song.getCasi());
         holder.txtnamesong.setText(song.getTenbaihat());
         holder.txtindex.setText(position+ 1 + "");
-
-
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ListSongAdapter extends  RecyclerView.Adapter<ListSongAdapter.ViewH
             txtnamesinger = itemView.findViewById(R.id.textviewnamesinger);
             imglike = itemView.findViewById(R.id.imageviewlikelistsongs);
 
-            //Bai53
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -68,6 +68,7 @@ public class ListSongAdapter extends  RecyclerView.Adapter<ListSongAdapter.ViewH
                     context.startActivity(intent);
                 }
             });
+
         }
     }
 }

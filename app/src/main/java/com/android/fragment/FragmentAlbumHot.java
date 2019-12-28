@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,7 +61,8 @@ public class FragmentAlbumHot extends Fragment {
             public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
                 ArrayList<Album> albumArrayList= (ArrayList<Album>) response.body();
                 albumAdapter = new AlbumAdapter(getActivity(),albumArrayList);
-                LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getActivity());
+                GridLayoutManager linearLayoutManager =new GridLayoutManager(getActivity(),2);
+//                LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getActivity());
                 recyclerViewalbum.setLayoutManager(linearLayoutManager);
                 recyclerViewalbum.setAdapter(albumAdapter);
             }

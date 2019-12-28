@@ -70,7 +70,6 @@ public class SonghotAdapter extends RecyclerView.Adapter<SonghotAdapter.ViewHold
             imghinh = itemView.findViewById(R.id.imageviewsonghot);
             imgluotthich = itemView.findViewById(R.id.imageviewluotthich);
 
-            //Bai53
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

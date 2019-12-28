@@ -2,12 +2,11 @@ package com.android.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +18,7 @@ import com.android.model.Song;
 import java.util.ArrayList;
 
 public class PlaySongsAdapter extends RecyclerView.Adapter<PlaySongsAdapter.ViewHolder>{
-    Bundle savedInstanceState;
+
     Context context;
     ArrayList<Song> arrSong;
     @NonNull
@@ -51,18 +50,19 @@ public class PlaySongsAdapter extends RecyclerView.Adapter<PlaySongsAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtindex,txttenbaihat,txtcasi;
-        public ViewHolder(View itemView){
+        public ViewHolder(final View itemView){
             super(itemView);
             txtcasi         = itemView.findViewById(R.id.textviewplaynhactencasi);
             txtindex        = itemView.findViewById(R.id.textviewplaynhacindex);
             txttenbaihat    = itemView.findViewById(R.id.textviewplaynhactenbaihat);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    PlaySongActivity playSongActivity=new PlaySongActivity();
-                    System.out.println(getPosition()+"---"+arrSong.size());
-                    playSongActivity.playMedia(arrSong,getPosition());
+//                    context.fi
+                    Intent intent = new Intent(context, PlaySongActivity.class);
+                    intent.putExtra("cacbaihat",arrSong);
+                    intent.putExtra("idSong",arrSong.get(getPosition()));
+                    context.startActivity(intent);
                 }
             });
         }
