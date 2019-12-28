@@ -1,6 +1,12 @@
 package com.android.activity;
 
+import android.Manifest;
 import android.os.Bundle;
+import android.os.Environment;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.android.adapter.MainViewPagerAdapter;
 import com.android.fragment.FragmentHome;
@@ -11,8 +17,11 @@ import com.android.mainapp.R;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import java.io.File;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,9 +33,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mapping();
         init();
     }
+
 
     public void init(){
         MainViewPagerAdapter mainViewPagerAdapter=new MainViewPagerAdapter(getSupportFragmentManager());
@@ -43,5 +54,6 @@ public class MainActivity extends AppCompatActivity {
     public void mapping(){
         tabLayout=findViewById(R.id.myTabLayout);
         viewPager =findViewById(R.id.myViewPager);
+
     }
 }

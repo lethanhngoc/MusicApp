@@ -24,6 +24,7 @@ import com.android.adapter.ViewPagerPlayListSongs;
 import com.android.fragment.FragmentMusicDisc;
 import com.android.fragment.FragmentPlayListSongs;
 import com.android.mainapp.R;
+import com.android.model.LocalSong;
 import com.android.model.Song;
 
 import java.io.IOException;
@@ -39,10 +40,12 @@ public class PlaySongActivity extends AppCompatActivity {
     ImageButton imgplay,imgnext,imgprev,imgrepeat,imgrandom,imgstop;
     ViewPager viewpagerplaynhac;
     public static ArrayList<Song> arrSongs = new ArrayList<>();
+    public static ArrayList<LocalSong> arrLocalSongs = new ArrayList<>();
     public static ViewPagerPlayListSongs adapternhac;
     FragmentMusicDisc fragmentMusicDisc;
     FragmentPlayListSongs fragmentPlayListSongs;
     MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayerLocal;
     int pos = 0;
     boolean repeat = false;
     boolean checkrandom = false;
@@ -245,7 +248,7 @@ public class PlaySongActivity extends AppCompatActivity {
     private void GetDataFromIntent() {
         Intent intent = getIntent();
         arrSongs.clear();
-
+        arrLocalSongs.clear();
         if(intent != null)
         {
             if(intent.hasExtra("cakhuc")){
@@ -256,6 +259,11 @@ public class PlaySongActivity extends AppCompatActivity {
             if(intent.hasExtra("cacbaihat")){
                 ArrayList<Song>  SongArrayList =intent.getParcelableArrayListExtra("cacbaihat");
                 arrSongs = SongArrayList;
+            }
+            if(intent.hasExtra("cacbaihatlocal")){
+                ArrayList<LocalSong> localSongArrayList = intent.getParcelableArrayListExtra("cacbaihatlocal");
+                arrLocalSongs = localSongArrayList;
+                Log.d("DDD",arrLocalSongs.get(0).toString());
             }
         }
     }
@@ -281,6 +289,7 @@ public class PlaySongActivity extends AppCompatActivity {
                 finish();
                 mediaPlayer.stop();
                 arrSongs.clear();
+                arrLocalSongs.clear();
             }
         });
         toolbarplaynhac.setTitleTextColor(Color.WHITE);
@@ -299,8 +308,52 @@ public class PlaySongActivity extends AppCompatActivity {
             new PlayMp3().execute(arrSongs.get(0).getLinkbaihat());
             imgplay.setImageResource(R.drawable.iconpause);
         }
+        if(arrLocalSongs.size() >0){
+            getSupportActionBar().setTitle(arrLocalSongs.get(0).getTenBaihat());
+            new PlayMp3Local().execute(arrLocalSongs.get(0).getUri());
+            mediaPlayerLocal.start();
+        }
+
 
     }
+    class PlayMp3Local extends AsyncTask<String,Void,String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return strings[0];
+        }
+
+        @Override
+        protected void onPostExecute(String song) {
+            super.onPostExecute(song);
+            try{
+//                mediaPlayerLocal =  MediaPlayer.create(getAc,)
+                mediaPlayerLocal.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mediaPlayerLocal.stop();
+                        mediaPlayerLocal.reset();
+                    }
+                });
+                mediaPlayerLocal.setDataSource(song);
+                mediaPlayerLocal.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mediaPlayerLocal.start();
+            TimeSongLocal();
+            UpdateTimeLocal();
+        }
+    }
+
+    private void UpdateTimeLocal() {
+
+    }
+
+    private void TimeSongLocal() {
+
+    }
+
     class PlayMp3 extends AsyncTask<String,Void,String>{
 
         @Override

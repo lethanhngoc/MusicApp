@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:text="Fragment SDCARD"
-        android:id="@+id/textTitleSDCard"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/ButtonSDCard"
+        android:id="@+id/recyclerviewlocalsong"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <ListView
-        android:layout_below="@id/textTitleSDCard"
-        android:id="@+id/listviewsdcard"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
+    </androidx.recyclerview.widget.RecyclerView>
+    <ImageButton
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="125dp"
+    android:id="@+id/ButtonSDCard"
+    android:layout_width="150dp"
+    android:layout_height="50dp"/>
 </RelativeLayout>
