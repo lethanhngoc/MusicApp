@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragmentLocalMusic"
-    android:background="@color/colorPrimary">
+    >
 
 <!--    <ImageView-->
 <!--        android:id="@+id/imgViewThumb"-->
@@ -55,7 +55,8 @@
         android:layout_alignBottom="@id/recyclerviewLocalSong"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="-68dp"
-        android:background="@drawable/button_background"
+        android:backgroundTint="#26A226"
+        android:src="@drawable/iconfinderspotify1"
         android:text="SHUFFLE PLAY" />
 
 </RelativeLayout>

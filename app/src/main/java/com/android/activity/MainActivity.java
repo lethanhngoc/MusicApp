@@ -78,13 +78,13 @@ public class MainActivity extends AppCompatActivity {
     public void init(){
         MainViewPagerAdapter mainViewPagerAdapter=new MainViewPagerAdapter(getSupportFragmentManager());
         mainViewPagerAdapter.addFragment(new FragmentHome(),"Home");
-        mainViewPagerAdapter.addFragment(new FragmentSearch(),"Search");
         mainViewPagerAdapter.addFragment(new FragmentLibrary(),"Your Library");
+        mainViewPagerAdapter.addFragment(new FragmentSearch(),"Search");
         viewPager.setAdapter(mainViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.icontrangchu);
-        tabLayout.getTabAt(1).setIcon(R.drawable.icontimkiem);
-        tabLayout.getTabAt(2).setIcon(R.drawable.icontrangchu);
+        tabLayout.getTabAt(0).setIcon(R.drawable.trangchu);
+        tabLayout.getTabAt(1).setIcon(R.drawable.local);
+        tabLayout.getTabAt(2).setIcon(R.drawable.search);
     }
 
     public void mapping(){

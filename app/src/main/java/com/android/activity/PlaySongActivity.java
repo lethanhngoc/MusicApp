@@ -243,6 +243,7 @@ public class PlaySongActivity extends AppCompatActivity {
                 },2000);
             }
         });
+
     }
 
     private void GetDataFromIntent() {
@@ -267,17 +268,17 @@ public class PlaySongActivity extends AppCompatActivity {
     }
 
     private void Init() {
-        toolbarplaynhac         = findViewById(R.id.toolbarplaynhac);
-        txtTimesong             = findViewById(R.id.textviewtimesong);
-        txtTotaltimesong        = findViewById(R.id.textviewtotaltimesong);
-        sktime                  = findViewById(R.id.seekbarsong);
-        imgplay                 = findViewById(R.id.imageviewbuttonplay);
-        imgnext                 = findViewById(R.id.imageviewbuttonnext);
-        imgprev                 = findViewById(R.id.imageviewbuttonprev);
-        imgrepeat               = findViewById(R.id.imageviewbuttonrepeat);
-        imgrandom               = findViewById(R.id.imageviewbuttonsuffle);
-        imgstop                 = findViewById(R.id.imageviewbuttonstop);
-        viewpagerplaynhac       = findViewById(R.id.viewpagerplaynhac);
+        toolbarplaynhac = findViewById(R.id.toolbarplaynhac);
+        txtTimesong = findViewById(R.id.textviewtimesong);
+        txtTotaltimesong = findViewById(R.id.textviewtotaltimesong);
+        sktime = findViewById(R.id.seekbarsong);
+        imgplay = findViewById(R.id.imageviewbuttonplay);
+        imgnext = findViewById(R.id.imageviewbuttonnext);
+        imgprev = findViewById(R.id.imageviewbuttonprev);
+        imgrepeat = findViewById(R.id.imageviewbuttonrepeat);
+        imgrandom = findViewById(R.id.imageviewbuttonsuffle);
+        imgstop = findViewById(R.id.imageviewbuttonstop);
+        viewpagerplaynhac = findViewById(R.id.viewpagerplaynhac);
 
         setSupportActionBar(toolbarplaynhac);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -293,23 +294,39 @@ public class PlaySongActivity extends AppCompatActivity {
         });
         toolbarplaynhac.setTitleTextColor(Color.WHITE);
         fragmentMusicDisc = new FragmentMusicDisc();
-        fragmentPlayListSongs =  new FragmentPlayListSongs();
-         adapternhac = new ViewPagerPlayListSongs(getSupportFragmentManager());
-         adapternhac.AddFragment(fragmentPlayListSongs);
-         adapternhac.AddFragment(fragmentMusicDisc);
-         viewpagerplaynhac.setAdapter(adapternhac);
+        fragmentPlayListSongs = new FragmentPlayListSongs();
+        adapternhac = new ViewPagerPlayListSongs(getSupportFragmentManager());
+        adapternhac.AddFragment(fragmentPlayListSongs);
+        adapternhac.AddFragment(fragmentMusicDisc);
+        viewpagerplaynhac.setAdapter(adapternhac);
 
-            //Xu ly su kien phat nhac init
-        fragmentMusicDisc = (FragmentMusicDisc) adapternhac.getItem(1);
-        if(arrSongs.size()>0){
-//            getSupportActionBar().setTitle(arrSongs.get(0).getTenbaihat());
-            String link=arrSongs.get(0).getLinkbaihat();
-            new PlayMp3().execute(arrSongs.get(0).getLinkbaihat());
+        //Xu ly su kien phat nhac init
 
-//            new PlayMp3().execute("/storage/emulated/0/Download/ThuanTheoYTroi-BuiAnhTuan-6150266 (1).mp3");
-            imgplay.setImageResource(R.drawable.iconpause);
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("idSong")) {
+            Song song = intent.getParcelableExtra("idSong");
+            for (int i = 0; i < arrSongs.size(); i++) {
+                if (arrSongs.get(i).getIdbaihat().equals(song.getIdbaihat())) {
+                    if (arrSongs.size() > 0) {
+                        System.out.println("Prepare " );
+                        getSupportActionBar().setTitle(arrSongs.get(i).getTenbaihat());
+//                        fragmentMusicDisc = (FragmentMusicDisc) adapternhac.getItem(i);
+                        new PlayMp3().execute(arrSongs.get(i).getLinkbaihat());
+                        imgplay.setImageResource(R.drawable.iconpause);
+                        System.out.println("NGuyen" + arrSongs.get(i).getTenbaihat());
+                    }
+                }
+            }
+        } else {
+            fragmentMusicDisc = (FragmentMusicDisc) adapternhac.getItem(1);
+            if (arrSongs.size() > 0) {
+            getSupportActionBar().setTitle(arrSongs.get(0).getTenbaihat());
+                String link = arrSongs.get(0).getLinkbaihat();
+                new PlayMp3().execute(arrSongs.get(0).getLinkbaihat());
+                imgplay.setImageResource(R.drawable.iconpause);
+            }
         }
-
     }
     class PlayMp3 extends AsyncTask<String,Void,String>{
 

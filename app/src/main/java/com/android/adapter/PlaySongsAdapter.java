@@ -1,14 +1,17 @@
 package com.android.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.activity.PlaySongActivity;
 import com.android.mainapp.R;
 import com.android.model.Song;
 
@@ -47,11 +50,21 @@ public class PlaySongsAdapter extends RecyclerView.Adapter<PlaySongsAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtindex,txttenbaihat,txtcasi;
-        public ViewHolder(View itemView){
+        public ViewHolder(final View itemView){
             super(itemView);
             txtcasi         = itemView.findViewById(R.id.textviewplaynhactencasi);
             txtindex        = itemView.findViewById(R.id.textviewplaynhacindex);
             txttenbaihat    = itemView.findViewById(R.id.textviewplaynhactenbaihat);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    context.fi
+                    Intent intent = new Intent(context, PlaySongActivity.class);
+                    intent.putExtra("cacbaihat",arrSong);
+                    intent.putExtra("idSong",arrSong.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

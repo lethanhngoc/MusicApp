@@ -60,7 +60,6 @@ public class ListSongAdapter extends  RecyclerView.Adapter<ListSongAdapter.ViewH
             imglike = itemView.findViewById(R.id.imageviewlikelistsongs);
 
 
-            //Bai53
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
