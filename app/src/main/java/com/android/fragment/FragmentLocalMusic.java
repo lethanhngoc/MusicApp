@@ -48,7 +48,7 @@ public class FragmentLocalMusic extends Fragment {
     RecyclerView recyclerViewplaynhac;
     PlaySongsAdapter playSongsAdapter;
     AppCompatActivity appCompatActivity;
-    Button button;
+    FloatingActionButton button;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -89,7 +89,7 @@ public class FragmentLocalMusic extends Fragment {
             if(file.isDirectory()){
                 arrayList.addAll(readSongs(file));
             }else{
-                if(file.getName().endsWith(".mp3")){
+                if(file.getName().endsWith(".mp3")||file.getName().endsWith(".wma")||file.getName().endsWith(".wav")){
                     arrayList.add(file);
                 }
             }

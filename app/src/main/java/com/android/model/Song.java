@@ -58,7 +58,9 @@ private String luotthich;
         tenbaihat=songName;
         casi=singerName;
         linkbaihat=songUri;
-        hinhbaihat=thumbUri.toString();
+        if(thumbUri!=null){
+            hinhbaihat=thumbUri.toString();
+        }else hinhbaihat="";
     }
 
     public String getIdbaihat() {

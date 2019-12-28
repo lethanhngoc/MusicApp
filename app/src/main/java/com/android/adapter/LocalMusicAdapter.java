@@ -34,14 +34,14 @@ public class LocalMusicAdapter extends  RecyclerView.Adapter<LocalMusicAdapter.V
 
     Context context;
     ArrayList<File> songFiles;
-    Button btnShufflePlay;
+    FloatingActionButton btnShufflePlay;
 
     public LocalMusicAdapter(Context context, ArrayList<File> songFiles) {
         this.context = context;
         this.songFiles = songFiles;
     }
 
-    public LocalMusicAdapter(Context context, ArrayList<File> songFiles,Button btnShufflePlay) {
+    public LocalMusicAdapter(Context context, ArrayList<File> songFiles,FloatingActionButton btnShufflePlay) {
         this.btnShufflePlay=btnShufflePlay;
         this.context = context;
         this.songFiles = songFiles;
@@ -87,7 +87,7 @@ public class LocalMusicAdapter extends  RecyclerView.Adapter<LocalMusicAdapter.V
                 public void onClick(View v) {
                     Intent intent = new Intent(context, PlaySongActivity.class);
                     String songName=songFiles.get(getPosition()).getName();
-                    String singerName="Bui Anh Tuan";
+                    String singerName="Unknown";
                     String songUri=songFiles.get(getPosition()).getPath();
                     String id=String.valueOf(getPosition());
                     Uri thumbUri=getData(songFiles.get(getPosition()));

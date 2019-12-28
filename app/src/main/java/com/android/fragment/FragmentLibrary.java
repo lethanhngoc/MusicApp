@@ -21,7 +21,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.android.activity.LibraryActivity;
 import com.android.adapter.AlbumAdapter;
 import com.android.adapter.MainViewPagerAdapter;
 import com.android.mainapp.R;
@@ -52,7 +51,6 @@ public class FragmentLibrary extends Fragment {
 
         MainViewPagerAdapter mainViewPagerAdapter=new MainViewPagerAdapter(myContext.getSupportFragmentManager());
         mainViewPagerAdapter.addFragment(new FragmentLocalMusic(),"Local");
-        mainViewPagerAdapter.addFragment(new FragmentYourPlaylist(),"Your Playlist");
 
         viewPager.setAdapter(mainViewPagerAdapter);
         TabLayout tabLayout = view.findViewById(R.id.tablayout);

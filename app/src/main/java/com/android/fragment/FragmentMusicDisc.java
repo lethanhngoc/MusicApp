@@ -39,7 +39,9 @@ public class FragmentMusicDisc extends Fragment {
         return view;
     }
     public void Playnhac(String hinhanh) {
-        Picasso.with(getActivity()).load(hinhanh).into(circleImageView);
+        if(hinhanh!=null && !hinhanh.equals("")){
+            Picasso.with(getActivity()).load(hinhanh).into(circleImageView);
+        }
         objectAnimator.start();
     }
 }
