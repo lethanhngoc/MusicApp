@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toolbar;
 
@@ -33,6 +34,7 @@ public class FragmentLibrary extends Fragment {
     ViewPager viewPager;
     private FragmentActivity myContext;
     Context context;
+    Button button;
     @Override
     public void onAttach(Activity activity) {
         myContext=(FragmentActivity) activity;
@@ -46,6 +48,7 @@ public class FragmentLibrary extends Fragment {
         context=container.getContext();
         view =inflater.inflate(R.layout.fragment_library,container,false);
         viewPager=view.findViewById(R.id.viewpagerLibrary);
+        button=view.findViewById(R.id.buttonPlayLocal);
 
         MainViewPagerAdapter mainViewPagerAdapter=new MainViewPagerAdapter(myContext.getSupportFragmentManager());
         mainViewPagerAdapter.addFragment(new FragmentLocalMusic(),"Local");

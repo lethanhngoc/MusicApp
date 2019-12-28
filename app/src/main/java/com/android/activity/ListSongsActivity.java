@@ -50,7 +50,7 @@ public class ListSongsActivity extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     Toolbar toolbar;
     RecyclerView recyclerViewListSongs;
-    FloatingActionButton floatingActionButton;
+    FloatingActionButton floatingActionButton, btnShufflePlay;
     ImageView imgListSong;
     ArrayList<Song> songArrayList;
     ListSongAdapter listSongAdapter;
@@ -93,6 +93,7 @@ public class ListSongsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
                 songArrayList = (ArrayList<Song>) response.body();
                 Log.d("idtheloaibaihat",songArrayList.size()+"");
+                songArrayList.clear();
                 listSongAdapter = new ListSongAdapter(ListSongsActivity.this,songArrayList);
                 recyclerViewListSongs.setLayoutManager(new LinearLayoutManager(ListSongsActivity.this));
                 recyclerViewListSongs.setAdapter(listSongAdapter);
@@ -208,6 +209,7 @@ public class ListSongsActivity extends AppCompatActivity {
         recyclerViewListSongs       = findViewById(R.id.RecyclerviewListSongs);
         floatingActionButton        = findViewById(R.id.floatingactionbutton);
         imgListSong                 = findViewById(R.id.imageviewlistsongs);
+        btnShufflePlay=findViewById(R.id.buttonPlayLocal);
     }
 
     private void DataIntent() {
@@ -242,5 +244,13 @@ public class ListSongsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        btnShufflePlay.setEnabled(true);
+//        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                System.out.println("HELLLOOOOOOOOO");
+//            }
+//        });
     }
 }

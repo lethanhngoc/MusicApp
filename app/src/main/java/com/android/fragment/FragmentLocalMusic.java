@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -27,10 +28,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.android.activity.ListSongsActivity;
 import com.android.activity.PlaySongActivity;
 import com.android.adapter.LocalMusicAdapter;
 import com.android.adapter.PlaySongsAdapter;
 import com.android.mainapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -45,6 +48,12 @@ public class FragmentLocalMusic extends Fragment {
     RecyclerView recyclerViewplaynhac;
     PlaySongsAdapter playSongsAdapter;
     AppCompatActivity appCompatActivity;
+    FloatingActionButton button;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -56,33 +65,18 @@ public class FragmentLocalMusic extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.fragment_local_music, container, false);
+        button=view.findViewById(R.id.buttonPlayLocal);
+
         recyclerViewListLocalSongs=view.findViewById(R.id.recyclerviewLocalSong);
-//        coverart=view.findViewById(R.id.imageViewLocalCurrentSong);
-//        listViewLocalMusic=view.findViewById(R.id.listViewLocalMusic);
-        final ArrayList<File> songs=readSongs(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+        ArrayList<File> songs=readSongs(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
         songNames=new String[songs.size()];
         for (int i=0;i<songs.size();i++){
             songNames[i]= songs.get(i).getName().replace(".mp3","");
         }
 
-//        ArrayAdapter<String> adapter=new ArrayAdapter<String>(appCompatActivity.getApplicationContext(),R.layout.song_layout,
-//                R.id.imageViewLocalSong,songNames);
-        LocalMusicAdapter localMusicAdapter=new LocalMusicAdapter(this.getContext(),songs);
-//        ArrayAdapter<LocalMusicAdapter> adapter= new ArrayAdapter<LocalMusicAdapter>();
-//        adapter.add(localMusicAdapter);
+        LocalMusicAdapter localMusicAdapter=new LocalMusicAdapter(this.getContext(),songs,button);
         recyclerViewListLocalSongs.setLayoutManager(new LinearLayoutManager(appCompatActivity.getApplicationContext()));
         recyclerViewListLocalSongs.setAdapter(localMusicAdapter);
-
-//        listViewLocalMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                startActivity(new Intent(MainActivity.this,AudioPlayer.class)
-//                        .putExtra("position",position).putExtra("list",songs));
-//            }
-//        });
-
-
-
         return view;
     }
 

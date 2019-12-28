@@ -10,6 +10,9 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,9 +20,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.activity.ListSongsActivity;
 import com.android.activity.PlaySongActivity;
 import com.android.mainapp.R;
 import com.android.model.Song;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -29,8 +34,15 @@ public class LocalMusicAdapter extends  RecyclerView.Adapter<LocalMusicAdapter.V
 
     Context context;
     ArrayList<File> songFiles;
+    FloatingActionButton btnShufflePlay;
 
     public LocalMusicAdapter(Context context, ArrayList<File> songFiles) {
+        this.context = context;
+        this.songFiles = songFiles;
+    }
+
+    public LocalMusicAdapter(Context context, ArrayList<File> songFiles,FloatingActionButton btnShufflePlay) {
+        this.btnShufflePlay=btnShufflePlay;
         this.context = context;
         this.songFiles = songFiles;
     }
@@ -63,13 +75,13 @@ public class LocalMusicAdapter extends  RecyclerView.Adapter<LocalMusicAdapter.V
 
         TextView txtindex,txtnamesong,txtnamesinger;
         ImageView thumb;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtindex = itemView.findViewById(R.id.textviewlistindex);
             txtnamesong = itemView.findViewById(R.id.textviewnamesong);
             txtnamesinger = itemView.findViewById(R.id.textviewnamesinger);
             thumb = itemView.findViewById(R.id.imageviewlikelistsongs);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,6 +96,15 @@ public class LocalMusicAdapter extends  RecyclerView.Adapter<LocalMusicAdapter.V
                     context.startActivity(intent);
                 }
             });
+            btnShufflePlay.setOnClickListener(new Button.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ArrayList<Song> songArr=parseArraySongFromFiles();
+                    Intent intent = new Intent(context,PlaySongActivity.class);
+                    intent.putExtra("cacbaihat",songArr);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -93,6 +114,8 @@ public class LocalMusicAdapter extends  RecyclerView.Adapter<LocalMusicAdapter.V
         MediaMetadataRetriever mmr=new MediaMetadataRetriever();
         mmr.setDataSource(songFile.getPath());
         byte [] data = mmr.getEmbeddedPicture();
+
+        //////IMPORTANT--NOT DELETE------////////
 
         // convert the byte array to a bitmap
 //        if(data != null)
@@ -120,4 +143,21 @@ public class LocalMusicAdapter extends  RecyclerView.Adapter<LocalMusicAdapter.V
         }
         return null;
     }
+
+    public ArrayList<Song> parseArraySongFromFiles(){
+        ArrayList<Song> songArrayList = new ArrayList<>();
+        int count=0;
+        for(File f:songFiles){
+            count++;
+            String songName=f.getName();
+            String singerName="Unknown";
+            String songUri=f.getPath();
+            String id=String.valueOf(count);
+            Uri thumbUri=getData(f);
+            Song localSong=new Song(id,songName,singerName,songUri,thumbUri);
+            songArrayList.add(localSong);
+        }
+        return songArrayList;
+    }
+
 }
