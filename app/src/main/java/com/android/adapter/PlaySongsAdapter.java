@@ -55,16 +55,16 @@ public class PlaySongsAdapter extends RecyclerView.Adapter<PlaySongsAdapter.View
             txtcasi         = itemView.findViewById(R.id.textviewplaynhactencasi);
             txtindex        = itemView.findViewById(R.id.textviewplaynhacindex);
             txttenbaihat    = itemView.findViewById(R.id.textviewplaynhactenbaihat);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    context.fi
-                    Intent intent = new Intent(context, PlaySongActivity.class);
-                    intent.putExtra("cacbaihat",arrSong);
-                    intent.putExtra("idSong",arrSong.get(getPosition()));
-                    context.startActivity(intent);
-                }
-            });
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    Intent intent = new Intent(context, PlaySongActivity.class);
+//                    intent.putExtra("cacbaihat",arrSong);
+//                    intent.putExtra("idSong",arrSong.get(getPosition()));
+//                    context.startActivity(intent);
+//                }
+//            });
         }
     }
 }
