@@ -34,14 +34,14 @@ public class LocalMusicAdapter extends  RecyclerView.Adapter<LocalMusicAdapter.V
 
     Context context;
     ArrayList<File> songFiles;
-    FloatingActionButton btnShufflePlay;
+    Button btnShufflePlay;
 
     public LocalMusicAdapter(Context context, ArrayList<File> songFiles) {
         this.context = context;
         this.songFiles = songFiles;
     }
 
-    public LocalMusicAdapter(Context context, ArrayList<File> songFiles,FloatingActionButton btnShufflePlay) {
+    public LocalMusicAdapter(Context context, ArrayList<File> songFiles,Button btnShufflePlay) {
         this.btnShufflePlay=btnShufflePlay;
         this.context = context;
         this.songFiles = songFiles;

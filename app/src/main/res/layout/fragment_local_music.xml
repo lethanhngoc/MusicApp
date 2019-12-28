@@ -2,44 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragmentLocalMusic"
-    android:background="@color/colorPrimary">
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imgViewThumb"-->
-<!--        android:scaleType="fitXY"-->
-<!--        android:layout_margin="3dp"-->
-<!--        android:layout_width="80dp"-->
-<!--        android:layout_height="80dp">-->
-<!--    </ImageView>-->
-<!--    <TextView-->
-<!--        android:text="Ten Bai Hat"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textColor="#363636"-->
-<!--        android:ellipsize="end"-->
-<!--        android:maxLines="1"-->
-<!--        android:layout_marginTop="7dp"-->
-<!--        android:layout_toRightOf="@id/imgViewThumb"-->
-<!--        android:layout_marginLeft="5dp"-->
-<!--        android:id="@+id/textviewnamesonghot"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--    </TextView>-->
-<!--    <TextView-->
-<!--        android:textSize="18sp"-->
-<!--        android:textColor="#8c8a8a"-->
-<!--        android:singleLine="true"-->
-<!--        android:text="Ca Si"-->
-<!--        android:layout_toRightOf="@id/imgViewThumb"-->
-<!--        android:layout_marginTop="7dp"-->
-<!--        android:layout_marginLeft="5dp"-->
-<!--        android:layout_below="@id/textviewnamesonghot"-->
-<!--        android:id="@+id/textViewNameSinger"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--    </TextView>-->
+    android:id="@+id/fragmentLocalMusic">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewLocalSong"
@@ -48,14 +11,14 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"></androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
         android:id="@+id/buttonPlayLocal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
         android:layout_alignBottom="@id/recyclerviewLocalSong"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-68dp"
-        android:background="@drawable/button_background"
+        android:layout_marginBottom="-67dp"
+        android:background="@drawable/ripple"
         android:text="SHUFFLE PLAY" />
 
 </RelativeLayout>

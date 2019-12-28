@@ -6,13 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.mainapp.R;
@@ -38,24 +34,6 @@ public class FragmentYourLibrary extends Fragment {
         ViewPager viewPager=rootView.findViewById(R.id.viewpagerLibrary);
 
         RelativeLayout relativeLayout = rootView.findViewById(R.id.fragmentLocalMusic);
-
-
-//        switch (getArguments().getInt(KEY_COLOR)) {
-//            case 1:
-//                relativeLayout.setBackgroundColor(Color.GREEN);
-//                break;
-//            case 2:
-//                relativeLayout.setBackgroundColor(Color.RED);
-//                break;
-//            case 3:
-//                relativeLayout.setBackgroundColor(Color.YELLOW);
-//                break;
-//            default:
-//                relativeLayout.setBackgroundColor(Color.GREEN);
-//                break;
-//        }
-//        TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-//        textView.setText("Kteam");
         return rootView;
     }
 

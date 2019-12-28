@@ -209,7 +209,6 @@ public class ListSongsActivity extends AppCompatActivity {
         recyclerViewListSongs       = findViewById(R.id.RecyclerviewListSongs);
         floatingActionButton        = findViewById(R.id.floatingactionbutton);
         imgListSong                 = findViewById(R.id.imageviewlistsongs);
-        btnShufflePlay=findViewById(R.id.buttonPlayLocal);
     }
 
     private void DataIntent() {

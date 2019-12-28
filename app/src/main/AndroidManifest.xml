@@ -19,7 +19,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name="com.android.activity.PlaySongActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleInstance"/>
         <activity android:name="com.android.activity.DanhsachtatcaAlbumActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity

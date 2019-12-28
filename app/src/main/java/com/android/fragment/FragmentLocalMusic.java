@@ -48,7 +48,7 @@ public class FragmentLocalMusic extends Fragment {
     RecyclerView recyclerViewplaynhac;
     PlaySongsAdapter playSongsAdapter;
     AppCompatActivity appCompatActivity;
-    FloatingActionButton button;
+    Button button;
 
     @Override
     public void onAttach(@NonNull Context context) {
