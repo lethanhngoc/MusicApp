@@ -40,7 +40,7 @@ public class ListPlaylistAdapter extends  RecyclerView.Adapter<ListPlaylistAdapt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Playlist playlist = arrplaylist.get(position);
-        Picasso.with(context).load(playlist.getHinhPlaylist()).into(holder.imghinhnen);
+        Picasso.with(context).load(playlist.getIcon()).into(holder.imghinhnen);
         holder.txttenplaylist.setText(playlist.getTen());
     }
 

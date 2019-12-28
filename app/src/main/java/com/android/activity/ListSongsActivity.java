@@ -72,7 +72,7 @@ public class ListSongsActivity extends AppCompatActivity {
             GetDataQuangcao(advertisement.getIdQuangCao());
         }
         if(playlist != null && !playlist.getTen().equals("")){
-            setValueInView(playlist.getTen(),playlist.getHinhPlaylist());
+            setValueInView(playlist.getTen(),playlist.getIcon());
             GetDataPlayList(playlist.getIdPlaylist());
         }
         if(theLoai!=null && !theLoai.getGenreName().equals("")){

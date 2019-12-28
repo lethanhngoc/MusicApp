@@ -65,7 +65,7 @@ public class FragmentPlaylist extends Fragment {
             @Override
             public void onResponse(Call<List<Playlist>> call, Response<List<Playlist>> response) {
                 mangplaylist= (ArrayList<Playlist>) response.body();
-                Log.d("BBB",mangplaylist.get(0).getTen());
+//                Log.d("BBB",mangplaylist.get(0).getTen());
                 playlistAdapter=new PlaylistAdapter(getActivity(),android.R.layout.simple_list_item_1,mangplaylist);
                 lvplaylist.setAdapter(playlistAdapter);
                 setListViewHeightBasedOnChildren(lvplaylist);
